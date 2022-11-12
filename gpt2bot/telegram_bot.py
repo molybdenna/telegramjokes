@@ -1,5 +1,3 @@
-
-
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, PicklePersistence
 from telegram import ChatAction
 from functools import wraps
