@@ -22,7 +22,7 @@ from telebot import types
 
 # Загружаем список интересных фактов
 
-f = open('jokes1.csv', 'r', encoding='UTF-8')
+f = open('molybdenna/telegramjokes/gpt2bot/jokes1.csv', 'r', encoding='UTF-8')
 
 facts = f.read().split('\n')
 
@@ -30,7 +30,7 @@ f.close()
 
 # Загружаем список поговорок
 
-f = open('Quotes.csv', 'r', encoding='UTF-8')
+f = open('molybdenna/telegramjokes/gpt2bot/Quotes.csv', 'r', encoding='UTF-8')
 
 thinks  = f.read().split('\n')
 
