@@ -14,7 +14,69 @@ from .utils import *
 
 logger = setup_logger(__name__)
 
+import telebot
 
+import random
+
+from telebot import types
+
+# Загружаем список интересных фактов
+
+f = open('jokes1.csv', 'r', encoding='UTF-8')
+
+facts = f.read().split('\n')
+
+f.close()
+
+# Загружаем список поговорок
+
+f = open('Quotes.csv', 'r', encoding='UTF-8')
+
+thinks  = f.read().split('\n')
+
+f.close()
+
+# Создаем бота
+
+bot = telebot.TeleBot('5428989661:AAEy2JmhL2JkOLMg-6I42DtK4F2sssSpTNU')
+
+# Команда start
+
+@bot.message_handler(commands=["start"])
+
+def start(m, res=False):
+
+        # Добавляем две кнопки
+
+        markup=types.ReplyKeyboardMarkup(resize_keyboard=True)
+
+        item1=types.KeyboardButton("Jokes")
+
+        item2=types.KeyboardButton("Quotes")
+
+        markup.add(item1)
+
+        markup.add(item2)
+
+        bot.send_message(m.chat.id, 'Click: \nJokes — if you want to smile\nQuotes — if you want to think',  reply_markup=markup)
+
+# Получение сообщений от клиента
+
+@bot.message_handler(content_types=["text"])
+
+def handle_text(message):
+
+    if message.text.strip() == 'Jokes' :
+
+            answer = random.choice(facts)
+
+    elif message.text.strip() == 'Quotes':
+
+            answer = random.choice(thinks)
+
+    # Отсылаем сообщение в чат пользователя
+
+    bot.send_message(message.chat.id, answer)
 def start_command(update, context):
     """Start a new dialogue when user sends the command "/start"."""
 
