@@ -1,3 +1,5 @@
+
+
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, PicklePersistence
 from telegram import ChatAction
 from functools import wraps
@@ -51,7 +53,6 @@ def requests_retry_session(retries=3, backoff_factor=0.3, status_forcelist=(500,
 
 def translate_message_to_gif(message, **chatbot_params):
     """Translate message text into a GIF.
-
     See https://engineering.giphy.com/contextually-aware-search-giphy-gets-work-specific/"""
 
     params = {
